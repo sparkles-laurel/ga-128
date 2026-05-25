@@ -7,44 +7,36 @@
 // Unless required by applicable law or agreed to in writing, this source                                                                               
 // is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND.                                                                    
 //                                                                                                                                                      
-// See the license for the specific language governing permissions and limitations.                                                                                                                                                             
-module xor_gate (
-    input wire a,
-    input wire b,
-    output wire out
-);
+// See the license for the specific language governing permissions and limitations.    
 
-    wire not_a;
-    wire not_b;
-    wire a_and_not_b;
-    wire b_and_not_a;
+`timescale 1ps / 1fs
 
-    not_gate u_not_a (
-        .in (a),
-        .out (not_a)
+module nor_gate_tb;
+
+    reg a;
+    reg b;
+    wire out;
+
+    // Instantiate our new NOR gate module
+    nor_gate uut (
+        .a(a),
+        .b(b),
+        .out(out)
     );
 
-    not_gate u_not_b (
-        .in (b),
-        .out (not_b)
-    );
+    initial begin
+        // Change the output file name for clarity
+        $dumpfile("nor_gate_sim.vcd");
+        $dumpvars(0, nor_gate_tb);
 
-    and_gate u_a_and_not_b (
-        .a   	(a    ),
-        .b   	(not_b    ),
-        .out 	(a_and_not_b )
-    );
+        // Truth table inputs for NOR
+        a = 0; b = 0; #10; // Expected output: 1
+        a = 0; b = 1; #10; // Expected output: 0
+        a = 1; b = 0; #10; // Expected output: 0
+        a = 1; b = 1; #10; // Expected output: 0
 
-    and_gate u_b_and_not_a (
-        .a      (b),
-        .b      (not_a),
-        .out    (b_and_not_a)
-    );
+        $display("NOR simulation complete!");
+        $finish;
+    end
 
-    or_gate u_a_xor_b (
-        .a      (a_and_not_b),
-        .b      (b_and_not_a),
-        .out    (out)
-    );
-    
 endmodule
