@@ -8,14 +8,37 @@
 // is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND.                                                                    
 //                                                                                                                                                      
 // See the license for the specific language governing permissions and limitations.    
-module not_gate (
-    input wire in,
-    output wire out
-);
-    // Compute not a = a nor a
-    nor_gate u_nor_gate(
-        .a   	(in    ),
-        .b   	(in    ),
-        .out 	(out  )
+
+`timescale 1ps / 1fs
+
+module xor_gate_tb;
+
+    reg a;
+    reg b;
+    wire out;
+
+    // Instantiate the XOR gate module
+    xor_gate uut (
+        .a(a),
+        .b(b),
+        .out(out)
     );
+
+    initial begin
+        $dumpfile("xor_gate_sim.vcd");
+        $dumpvars(0, xor_gate_tb);
+
+        $display("EMULATE: XOR");
+        // Truth table inputs for XOR
+        a = 0; b = 0; #10; // Expected output: 0
+        $display("[%0t fs] Input a=0 b=0 => Output %b", $time, out);
+        a = 0; b = 1; #10; // Expected output: 1
+        $display("[%0t fs] Input a=0 b=1 => Output %b", $time, out);
+        a = 1; b = 0; #10; // Expected output: 1
+        $display("[%0t fs] Input a=1 b=0 => Output %b", $time, out);
+        a = 1; b = 1; #10; // Expected output: 0
+        $display("[%0t fs] Input a=1 b=1 => Output %b", $time, out);
+        $finish;
+    end
+
 endmodule
