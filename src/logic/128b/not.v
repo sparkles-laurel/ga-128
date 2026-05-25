@@ -9,9 +9,7 @@
 //
 // See the license for the specific language governing permissions and limitations.
 
-import "../gates/not_gate.v"
-
-module not (
+module not_128 (
         input wire [127:0] in,
         output wire [127:0] out
     );

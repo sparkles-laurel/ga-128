@@ -10,23 +10,21 @@
 // See the license for the specific language governing permissions and limitations.
 
 
-import "../gates/nor_gate.v"
+module nor_128 (
+        input wire [127:0] a,
+        input wire [127:0] b,
+        output wire [127:0] out
+    );
+    genvar i;
 
-       module nor (
-               input wire [127:0] a,
-               input wire [127:0] b,
-               output wire [127:0] out
-           );
-           genvar i;
+    generate
+        for (i = 0; i < 128 ; i = i + 1) begin
+            nor_gate u_nor (
+                         .a   	(a[i]    ),
+                         .b   	(b[i]   ),
+                         .out 	(out[i]  )
+                     );
+        end
+    endgenerate
 
-           generate
-               for (i = 0; i < 128 ; i = i + 1) begin
-                   nor_gate u_nor (
-                                .a   	(a[i]    ),
-                                .b   	(b[i]   ),
-                                .out 	(out[i]  )
-                            );
-               end
-           endgenerate
-
-       endmodule;
+endmodule;

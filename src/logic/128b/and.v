@@ -9,25 +9,24 @@
 //
 // See the license for the specific language governing permissions and limitations.
 
-import "../gates/and_gate.v"
+module and_128 (
+        input wire [127:0] a,
+        input wire [127:0] b,
+        output wire [127:0] out
+    );
 
-       module and(
-               input wire [127:0] a,
-               input wire [127:0] b,
-               output wire [127:0] out
-           );
+    genvar i;
 
-           genvar i;
+    generate
+        for (i = 0; i < 127; i = i + 1) begin
 
-           generate
-               for (i = 0; i < 127; i = i + 1) begin
+            and_gate u_and_gate(
+                         .a   	(a[i]    ),
+                         .b   	(b[i]    ),
+                         .out 	(out[i]  )
+                     );
+        end
+    endgenerate
 
-                   and_gate u_and_gate(
-                                .a   	(a[i]    ),
-                                .b   	(b[i]    ),
-                                .out 	(out[i]  )
-                            );
-               end
-
-           endmodule //and
+endmodule; //and
 

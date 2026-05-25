@@ -29,13 +29,16 @@ module nor_gate_tb;
         $dumpfile("nor_gate_sim.vcd");
         $dumpvars(0, nor_gate_tb);
 
+        $display("EMULATE: NOR");
         // Truth table inputs for NOR
         a = 0; b = 0; #10; // Expected output: 1
+        $display("[%0t fs] Input a=0 b=0 => Output %b", $time, out);
         a = 0; b = 1; #10; // Expected output: 0
+        $display("[%0t fs] Input a=0 b=1 => Output %b", $time, out);
         a = 1; b = 0; #10; // Expected output: 0
+        $display("[%0t fs] Input a=1 b=0 => Output %b", $time, out);
         a = 1; b = 1; #10; // Expected output: 0
-
-        $display("NOR simulation complete!");
+        $display("[%0t fs] Input a=1 b=1 => Output %b", $time, out);
         $finish;
     end
 
