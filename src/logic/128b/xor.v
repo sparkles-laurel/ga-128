@@ -18,9 +18,9 @@ module xor_128 (
     genvar i;
 
     generate
-        for (i = 0; i < 127; i = i + 1) begin
+        for (i = 0; i < 128; i = i + 1) begin
 
-            xor_gate u_and_gate(
+            xor_gate u_xor_gate(
                          .a   	(a[i]    ),
                          .b   	(b[i]    ),
                          .out 	(out[i]  )

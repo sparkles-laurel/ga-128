@@ -17,3 +17,17 @@ is inversely proportional to the size of the ISA.
 This is useful especially for experimenting with building CPUs from newly
 discovered materials like graphene, and potentially building the future of
 high speed computing.
+
+# Development
+
+## Dependencies
+
+- `make`
+- `iverilog`
+- `expect`
+
+Run the full simulation test suite with:
+
+```sh
+make test
+```

@@ -16,7 +16,7 @@ module not_128 (
     genvar i;
 
     generate
-        for (i = 0; i < 127; i = i + 1) begin
+        for (i = 0; i < 128; i = i + 1) begin
             not_gate u_not_gate(
                          .in  	(in[i]   ),
                          .out 	(out[i]  )
