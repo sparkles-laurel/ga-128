@@ -1,0 +1,84 @@
+name: Feature request
+description: Propose a new module, test, ISA concept, workflow improvement, or documentation update.
+title: "feature: "
+labels:
+  - enhancement
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form to describe a concrete improvement and the design goal it supports.
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: Describe the proposed feature in one or two sentences.
+      placeholder: "Example: Add a 128-bit ripple-carry adder built from the existing gate primitives."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      description: Which area does this request primarily affect?
+      options:
+        - Logic module
+        - Test coverage
+        - ISA or architecture design
+        - Build or CI workflow
+        - Documentation
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Motivation
+      description: Explain why this would be useful for the project.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed-design
+    attributes:
+      label: Proposed design
+      description: Describe the implementation approach, expected module interface, or workflow change.
+      placeholder: |
+        - New module:
+        - Inputs:
+        - Outputs:
+        - Dependencies:
+        - Tests:
+    validations:
+      required: false
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: List other approaches and why they may be less suitable.
+    validations:
+      required: false
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance criteria
+      description: What must be true for this feature to be considered complete?
+      placeholder: |
+        - [ ] Implementation added
+        - [ ] Tests added or updated
+        - [ ] Documentation updated if needed
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional context
+      description: Add links, diagrams, prior art, or related issues.
+    validations:
+      required: false

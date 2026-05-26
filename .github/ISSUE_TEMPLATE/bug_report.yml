@@ -1,0 +1,76 @@
+name: Bug report
+description: Report incorrect behavior, failing tests, or regressions in the hardware design.
+title: "bug: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report an issue. Please include enough detail for maintainers to reproduce and verify the problem.
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: Describe the incorrect behavior clearly and briefly.
+      placeholder: "Example: and_128 leaves bit 127 undriven under specific inputs."
+    validations:
+      required: true
+
+  - type: textarea
+    id: affected-area
+    attributes:
+      label: Affected area
+      description: List the relevant module, testbench, Makefile target, or documentation page.
+      placeholder: "Example: src/logic/128b/and.v, src/testbench/and_128_tb.v"
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      description: Provide the exact commands, inputs, or test vectors needed to reproduce the issue.
+      placeholder: |
+        1. Run `make test`
+        2. Observe ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What should happen?
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: What happened instead? Include simulator output when relevant.
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Include tool versions and operating system details when relevant.
+      placeholder: |
+        - OS:
+        - Icarus Verilog:
+        - Expect:
+        - Make:
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional context
+      description: Add waveform notes, logs, links, screenshots, or related issues.
+    validations:
+      required: false
