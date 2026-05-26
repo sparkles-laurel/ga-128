@@ -25,7 +25,7 @@ module or_gate_tb;
     );
 
     initial begin
-        $dumpfile("or_gate_sim.vcd");
+        $dumpfile("out/vcd/or_gate_sim.vcd");
         $dumpvars(0, or_gate_tb);
 
         $display("EMULATE: OR");

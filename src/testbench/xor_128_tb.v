@@ -34,7 +34,7 @@ module xor_128_tb;
     endtask
 
     initial begin
-        $dumpfile("xor_128_sim.vcd");
+        $dumpfile("out/vcd/xor_128_sim.vcd");
         $dumpvars(0, xor_128_tb);
 
         check(128'h00000000000000000000000000000000,

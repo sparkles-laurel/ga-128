@@ -25,7 +25,7 @@ module and_gate_tb;
     );
 
     initial begin
-        $dumpfile("and_gate_sim.vcd");
+        $dumpfile("out/vcd/and_gate_sim.vcd");
         $dumpvars(0, and_gate_tb);
 
         $display("EMULATE: AND");

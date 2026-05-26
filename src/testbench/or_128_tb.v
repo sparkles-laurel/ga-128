@@ -34,7 +34,7 @@ module or_128_tb;
     endtask
 
     initial begin
-        $dumpfile("or_128_sim.vcd");
+        $dumpfile("out/vcd/or_128_sim.vcd");
         $dumpvars(0, or_128_tb);
 
         check(128'h00000000000000000000000000000000,

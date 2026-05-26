@@ -26,7 +26,7 @@ module nor_gate_tb;
 
     initial begin
         // Change the output file name for clarity
-        $dumpfile("nor_gate_sim.vcd");
+        $dumpfile("out/vcd/nor_gate_sim.vcd");
         $dumpvars(0, nor_gate_tb);
 
         $display("EMULATE: NOR");

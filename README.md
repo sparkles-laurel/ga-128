@@ -21,13 +21,53 @@ high speed computing.
 # Development
 
 ## Dependencies
+## Dependencies
 
-- `make`
-- `iverilog`
-- `expect`
+Required tools:
 
-Run the full simulation test suite with:
+- `make` (build tool)
+- `iverilog` (Icarus Verilog simulator)
+- `expect` (test runner used by `make test`)
+
+Install examples:
+
+Debian / Ubuntu:
+```sh
+sudo apt update
+sudo apt install make iverilog expect
+```
+
+Fedora:
+```sh
+sudo dnf install make iverilog expect
+```
+
+Arch Linux:
+```sh
+sudo pacman -Syu
+sudo pacman -S base-devel iverilog expect
+```
+
+openSUSE:
+```sh
+sudo zypper install make iverilog expect
+```
+
+macOS (Homebrew):
+```sh
+brew install icarus-verilog expect
+```
+
+Windows:
+- Recommended: use WSL and follow the Debian/Ubuntu steps, or use Chocolatey:
+```powershell
+choco install make iverilog expect
+```
+
+After installing dependencies, run the full simulation test suite with:
 
 ```sh
 make test
 ```
+
+VCD output files are written to `out/vcd/` by the testbenches (the Makefile will create this directory).

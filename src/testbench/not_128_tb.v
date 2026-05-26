@@ -30,7 +30,7 @@ module not_128_tb;
     endtask
 
     initial begin
-        $dumpfile("not_128_sim.vcd");
+        $dumpfile("out/vcd/not_128_sim.vcd");
         $dumpvars(0, not_128_tb);
 
         check(128'h00000000000000000000000000000000);

@@ -5,6 +5,7 @@ SRC_DIR := src/logic/gates
 SRC_128_DIR := src/logic/128b
 TB_DIR := src/testbench
 OUT_DIR := out
+VCD_DIR := $(OUT_DIR)/vcd
 TEST_DIR := test
 
 # Gate modules (dependencies)
@@ -39,6 +40,7 @@ SIMS += $(NOR_128_SIM) $(AND_128_SIM) $(OR_128_SIM) $(NOT_128_SIM) $(XOR_128_SIM
 
 # All targets
 all: $(SIMS)
+	mkdir -p $(VCD_DIR)
 
 # NOR gate compilation
 $(NOR_SIM): $(GATES) $(NOR_TB)
@@ -82,6 +84,7 @@ $(XOR_128_SIM): $(GATES) $(SRC_DIR)/and_gate.v $(SRC_DIR)/or_gate.v $(SRC_DIR)/x
 
 # Run tests
 test: all
+	mkdir -p $(VCD_DIR)
 	@echo "Running NOR gate test..."
 	expect $(TEST_DIR)/nor_gate_tb.tcl
 	@echo "Running AND gate test..."
@@ -107,4 +110,5 @@ test: all
 # Clean build artifacts
 clean:
 	rm -f $(OUT_DIR)/*_sim
+	rm -rf $(VCD_DIR)
 	rm -f *.vcd

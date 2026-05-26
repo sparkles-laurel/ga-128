@@ -25,7 +25,7 @@ module xor_gate_tb;
     );
 
     initial begin
-        $dumpfile("xor_gate_sim.vcd");
+        $dumpfile("out/vcd/xor_gate_sim.vcd");
         $dumpvars(0, xor_gate_tb);
 
         $display("EMULATE: XOR");
