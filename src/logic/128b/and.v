@@ -18,7 +18,7 @@ module and_128 (
     genvar i;
 
     generate
-        for (i = 0; i < 127; i = i + 1) begin
+        for (i = 0; i < 128; i = i + 1) begin
 
             and_gate u_and_gate(
                          .a   	(a[i]    ),
@@ -29,4 +29,3 @@ module and_128 (
     endgenerate
 
 endmodule; //and
-

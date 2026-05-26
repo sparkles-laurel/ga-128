@@ -18,7 +18,7 @@ module or_128 (
     genvar i;
 
     generate
-        for (i = 0; i < 127; i = i + 1) begin
+        for (i = 0; i < 128; i = i + 1) begin
 
             or_gate u_or_gate(
                          .a   	(a[i]    ),
