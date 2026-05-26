@@ -22,6 +22,7 @@ AND_128_TB := $(TB_DIR)/and_128_tb.v
 OR_128_TB := $(TB_DIR)/or_128_tb.v
 NOT_128_TB := $(TB_DIR)/not_128_tb.v
 XOR_128_TB := $(TB_DIR)/xor_128_tb.v
+LATCH_128_TB := $(TB_DIR)/latch_128_tb.v
 
 # Simulators
 NOR_SIM := $(OUT_DIR)/nor_gate_sim
@@ -34,9 +35,11 @@ AND_128_SIM := $(OUT_DIR)/and_128_sim
 OR_128_SIM := $(OUT_DIR)/or_128_sim
 NOT_128_SIM := $(OUT_DIR)/not_128_sim
 XOR_128_SIM := $(OUT_DIR)/xor_128_sim
+LATCH_128_SIM := $(OUT_DIR)/latch_128_sim
 
 SIMS := $(NOR_SIM) $(AND_SIM) $(OR_SIM) $(NOT_SIM) $(XOR_SIM)
 SIMS += $(NOR_128_SIM) $(AND_128_SIM) $(OR_128_SIM) $(NOT_128_SIM) $(XOR_128_SIM)
+SIMS += $(LATCH_128_SIM)
 
 # All targets
 all: $(SIMS)
@@ -65,6 +68,10 @@ $(XOR_SIM): $(GATES) $(SRC_DIR)/and_gate.v $(SRC_DIR)/or_gate.v $(SRC_DIR)/xor_g
 # 128-bit NOR compilation
 $(NOR_128_SIM): $(GATES) $(SRC_128_DIR)/nor.v $(NOR_128_TB)
 	iverilog -o $@ $(GATES) $(SRC_128_DIR)/nor.v $(NOR_128_TB)
+
+# 128-bit LATCH compilation
+$(LATCH_128_SIM): $(GATES) $(SRC_128_DIR)/latch.v $(LATCH_128_TB)
+	iverilog -o $@ $(GATES) $(SRC_128_DIR)/latch.v $(LATCH_128_TB)
 
 # 128-bit AND compilation
 $(AND_128_SIM): $(GATES) $(SRC_DIR)/and_gate.v $(SRC_128_DIR)/and.v $(AND_128_TB)
@@ -105,6 +112,8 @@ test: all
 	expect $(TEST_DIR)/not_128_tb.tcl
 	@echo "Running 128-bit XOR gate test..."
 	expect $(TEST_DIR)/xor_128_tb.tcl
+	@echo "Running 128-bit LATCH test..."
+	expect $(TEST_DIR)/latch_128_tb.tcl
 	@echo "All tests passed!"
 
 # Clean build artifacts
