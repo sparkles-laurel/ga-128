@@ -23,7 +23,7 @@ module not_gate_tb;
     );
 
     initial begin
-        $dumpfile("not_gate_sim.vcd");
+        $dumpfile("out/vcd/not_gate_sim.vcd");
         $dumpvars(0, not_gate_tb);
 
         $display("EMULATE: NOT");

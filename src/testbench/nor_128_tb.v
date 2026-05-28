@@ -34,7 +34,7 @@ module nor_128_tb;
     endtask
 
     initial begin
-        $dumpfile("nor_128_sim.vcd");
+        $dumpfile("out/vcd/nor_128_sim.vcd");
         $dumpvars(0, nor_128_tb);
 
         check(128'h00000000000000000000000000000000,
